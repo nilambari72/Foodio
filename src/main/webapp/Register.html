@@ -1,0 +1,315 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foodio - Register</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        /* =========================
+           BACKGROUND VIDEO
+           ========================= */
+
+        .background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+        }
+
+        .video-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.45);
+            z-index: -1;
+        }
+
+        /* =========================
+           REGISTER CONTAINER
+           ========================= */
+
+        .register-container {
+            width: 390px;
+            padding: 22px 32px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 18px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
+            backdrop-filter: blur(8px);
+            animation: formAppear 0.8s ease;
+        }
+
+        /* =========================
+           LOGO
+           ========================= */
+
+        .logo {
+            text-align: center;
+            font-size: 30px;
+            font-weight: bold;
+            color: #ff4b2b;
+            margin-bottom: 5px;
+        }
+
+        /* =========================
+           HEADING
+           ========================= */
+
+        h2 {
+            text-align: center;
+            font-size: 24px;
+            color: #222;
+            margin-bottom: 4px;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 13px;
+            color: #777;
+            margin-bottom: 15px;
+        }
+
+        /* =========================
+           INPUT FIELDS
+           ========================= */
+
+        .input-group {
+            margin-bottom: 10px;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 9px 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            outline: none;
+            font-size: 13px;
+            background: #fff;
+            transition: 0.3s;
+        }
+
+        .input-group input:focus {
+            border-color: #ff4b2b;
+            box-shadow: 0 0 0 2px rgba(255, 75, 43, 0.12);
+        }
+
+        .input-group input::placeholder {
+            color: #aaa;
+        }
+
+        /* =========================
+           BUTTON
+           ========================= */
+
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 3px;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #ff512f, #f09819);
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 7px 18px rgba(255, 81, 47, 0.35);
+        }
+
+        /* =========================
+           LOGIN TEXT
+           ========================= */
+
+        .login-text {
+            text-align: center;
+            margin-top: 13px;
+            font-size: 13px;
+            color: #666;
+        }
+
+        .login-text a {
+            color: #ff4b2b;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .login-text a:hover {
+            text-decoration: underline;
+        }
+
+        /* =========================
+           ANIMATION
+           ========================= */
+
+        @keyframes formAppear {
+            from {
+                opacity: 0;
+                transform: translateY(25px) scale(0.97);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* =========================
+           RESPONSIVE
+           ========================= */
+
+        @media (max-width: 500px) {
+            .register-container {
+                width: 90%;
+                padding: 20px 25px;
+            }
+
+            .logo {
+                font-size: 27px;
+            }
+
+            h2 {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- BACKGROUND VIDEO -->
+    <!-- ACC.mp4 is inside webapp/image -->
+
+    <video autoplay muted loop playsinline class="background-video">
+        <source src="image/ACC.mp4" type="video/mp4">
+    </video>
+
+    <!-- DARK OVERLAY -->
+    <div class="video-overlay"></div>
+
+
+    <!-- REGISTER FORM -->
+
+    <div class="register-container">
+
+        <div class="logo">
+            Foodio
+        </div>
+
+        <h2>Create Account</h2>
+
+        <p class="subtitle">
+            Join Foodio and enjoy delicious food
+        </p>
+
+        <form action="RegisterServlet" method="post">
+
+            <div class="input-group">
+                <label for="name">Full Name</label>
+
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Enter your full name"
+                    required>
+            </div>
+
+
+            <div class="input-group">
+                <label for="email">Email</label>
+
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Enter your email"
+                    required>
+            </div>
+
+
+            <div class="input-group">
+                <label for="phone">Phone Number</label>
+
+                <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    placeholder="Enter your phone number"
+                    required>
+            </div>
+
+
+            <div class="input-group">
+                <label for="password">Password</label>
+
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Create a password"
+                    required>
+            </div>
+
+
+            <div class="input-group">
+                <label for="confirmPassword">Confirm Password</label>
+
+                <input
+                    type="password"
+                    id="confirmPassword"
+                    name="confirmPassword"
+                    placeholder="Confirm your password"
+                    required>
+            </div>
+
+
+            <button type="submit">
+                Create Account
+            </button>
+
+        </form>
+
+
+        <p class="login-text">
+            Already have an account?
+            <a href="Register.html">Sign Up</a>
+        </p>
+
+    </div>
+
+</body>
+</html>
+```
